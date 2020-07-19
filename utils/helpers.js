@@ -9,3 +9,13 @@ exports.isPalindrome = input => {
     .join('');
   return str === reversedInput;
 };
+
+exports.applyDiscount = products =>
+  products.map(product => ({
+    ...product,
+    priceWithDiscount: product.price * 0.5
+  }));
+
+exports.isNumeric = num => {
+  return /^\d+$/.test(num);
+};

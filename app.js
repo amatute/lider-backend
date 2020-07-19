@@ -1,8 +1,10 @@
 const express = require('express');
+const cors = require('cors');
 const productRouter = require('./routes/productsRoutes');
 const AppError = require('./utils/AppError');
 
 const app = express();
+app.use(cors());
 
 // 1. Middelwares
 app.use(express.json());
