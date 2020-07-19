@@ -6,7 +6,16 @@ dotenv.config({
   path: './config.env'
 });
 
-const DB = `mongodb://${process.env.DB_USER}:${process.env.DB_PASSWORD}@localhost:${process.env.DB_PORT}/${process.env.DB_NAME}?authSource=admin`;
+const {
+  DB_USER,
+  DB_PASSWORD,
+  DB_PORT,
+  DB_NAME,
+  DB_HOST = 'localhost'
+} = process.env;
+
+console.log('env:', DB_USER, DB_PASSWORD, DB_PORT, DB_NAME, DB_HOST);
+const DB = `mongodb://${DB_USER}:${DB_PASSWORD}@${DB_HOST}:${DB_PORT}/${DB_NAME}?authSource=admin`;
 
 mongoose
   .connect(DB, {
