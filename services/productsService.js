@@ -57,9 +57,9 @@ const searchByBrandOrDescription = async params => {
 exports.searchProducts = async params => {
   const { searchTerm } = params;
   const productsSearchResult =
-    searchTerm.length <= 3
-      ? await searchById(searchTerm)
-      : await searchByBrandOrDescription(params);
+    searchTerm.length >= 3 && !isNumeric(searchTerm)
+      ? await searchByBrandOrDescription(params)
+      : await searchById(searchTerm);
 
   if (isPalindrome(searchTerm)) {
     return {

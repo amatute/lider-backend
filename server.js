@@ -14,13 +14,14 @@ const {
   DB_HOST = 'localhost'
 } = process.env;
 
-console.log('env:', DB_USER, DB_PASSWORD, DB_PORT, DB_NAME, DB_HOST);
+console.log(
+  `db_user:${DB_USER} db_password:${DB_PASSWORD} db_host:${DB_HOST} db_port:${DB_PORT} db_name${DB_NAME}`
+);
 const DB = `mongodb://${DB_USER}:${DB_PASSWORD}@${DB_HOST}:${DB_PORT}/${DB_NAME}?authSource=admin`;
 
 mongoose
   .connect(DB, {
     useNewUrlParser: true,
-    useCreateIndex: true,
     useFindAndModify: false,
     useUnifiedTopology: true
   })

@@ -9,11 +9,6 @@ app.use(cors());
 // 1. Middelwares
 app.use(express.json());
 
-app.use((req, res, next) => {
-  console.log('Middleware');
-  next();
-});
-
 // 2. Routes
 app.use('/api/v1/products', productRouter);
 
